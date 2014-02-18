@@ -1,0 +1,26 @@
+#
+## Escape character: Control-^
+escape ^^^^
+#
+## do not trash BackSpace, usually DEL
+bindkey -k kb
+bindkey -d -k kb
+#
+## do not trash Delete, usually ESC [ 3 ~
+bindkey -k kD
+bindkey -d -k kD
+
+shelltitle "$ |bash"
+
+term screen-256color
+
+screen 0 emacs -nw
+screen 1
+select 0
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bY}%-w%{.rY}%n %t%{-}%+w %=%{..G} %H %{..Y} %Y/%m/%d %C%a "
+
+startup_message off
+vbell off
