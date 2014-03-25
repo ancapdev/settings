@@ -1,5 +1,29 @@
+;; .emacs
+
+(add-to-list 'load-path "~/elisp/")
+
+;;; uncomment this line to disable loading of "default.el" at startup
+;; (setq inhibit-default-init t)
+
+;; enable visual feedback on selections
+;(setq transient-mark-mode t)
+
+;; default to better frame titles
+(setq frame-title-format
+      (concat  "%b - emacs@" (system-name)))
+
+;; default to unified diffs
+(setq diff-switches "-u")
+
+;; always end a file with a newline
+;(setq require-final-newline 'query)
+
+;;; uncomment for CJK utf-8 support for non-Asian users
+;; (require 'un-define)
+
+
 ;; Color theme
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp/color-theme-6.6.0")
+(add-to-list 'load-path "~/elisp/color-theme-6.6.0")
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn
@@ -19,19 +43,18 @@
 (defun my-c-mode-hook ()
   (setq c-basic-offset 4)
   (c-set-offset 'substatement-open 0)
-  (c-set-offset 'innamespace 4)
+  (c-set-offset 'innamespace 0)
   (c-set-offset 'arglist-intro 4)
   (setq indent-tabs-mode nil)
   (setq tab-width 4))
 (add-hook 'c-mode-common-hook  'my-c-mode-hook)
 
 ;; CMake mode
-(add-to-list 'load-path "/opt/local/share/emacs/site-lisp")
 (require 'cmake-mode)
 (setq auto-mode-alist
       (append '(("CMakeLists\\.txt\\'" . cmake-mode)
-		("\\.cmake\\'" . cmake-mode))
-	      auto-mode-alist))
+	("\\.cmake\\'" . cmake-mode))
+            auto-mode-alist))
 
 ;; Stop windows splitting
 (setq split-height-threshold nil)
